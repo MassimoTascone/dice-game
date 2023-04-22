@@ -21,7 +21,7 @@ export default function App() {
   // Reroll dice nbrs
   const handleRoll = () => setDice(allNewDice);
   const handleClick = (id) => {
-    console.log("clicked", id);
+    console.log(id);
   };
 
   const [dice, setDice] = useState(allNewDice());
