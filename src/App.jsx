@@ -19,14 +19,21 @@ export default function App() {
   };
 
   // Reroll dice nbrs
-  const handleRoll = () => setDice(allNewDice);
-  const handleClick = (id) => {
-    console.log(id);
-  };
+  function handleRoll() {
+    setDice(allNewDice);
+  }
+
+  function handleClick(id) {
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
+  }
 
   const [dice, setDice] = useState(allNewDice());
 
-  const diceElements = dice.map((die) => {
+  const diceElements = dice?.map((die) => {
     return (
       <Die
         value={die.value}
@@ -36,7 +43,7 @@ export default function App() {
       />
     );
   });
-  console.log(dice);
+  console.log({ dice });
   return (
     <main>
       <div className="dice--container">{diceElements}</div>

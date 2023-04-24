@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./Die.css";
 
 export function Die(props) {
