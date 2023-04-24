@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./RollCounter.css";
 
 export function RollCounter(props) {
@@ -5,13 +6,9 @@ export function RollCounter(props) {
     <>
       {props.rollNbr > 0 && (
         <p>
-          {props.lang === "eng"
-            ? props.content.eng.counter
-            : props.content.fr.counter}{" "}
-          <span>{props.rollNbr}</span>{" "}
-          {props.lang === "eng"
-            ? props.content.eng.counterBis
-            : props.content.fr.counterBis}
+          {props.content[props.lang].counter}
+          <span> {props.rollNbr} </span>
+          {props.content[props.lang].counterBis}
         </p>
       )}
     </>

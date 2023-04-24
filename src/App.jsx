@@ -75,12 +75,8 @@ export default function App() {
           <option value="fr">FR</option>
         </select>
       </div>
-      <h1 className="title">
-        {lang === "eng" ? content.eng.title : content.fr.title}
-      </h1>
-      <p className="instructions">
-        {lang === "eng" ? content.eng.instructions : content.fr.instructions}
-      </p>
+      <h1 className="title">{content[lang].title}</h1>
+      <p className="instructions">{content[lang].instructions}</p>
       <div className="dice--container">{diceElements}</div>
       <PushButton handleRoll={handleRoll} lang={lang} content={content} />
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
