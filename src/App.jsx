@@ -2,7 +2,7 @@ import "./App.css";
 import { Die } from "../src/components/Die/Die";
 import { PushButton } from "../src/components/PushButton/PushButton";
 import { RollCounter } from "./components/RollCounter/RollCounter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { content } from "./translation";
 
@@ -50,6 +50,7 @@ export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [rollNbr, setRollNbr] = useState(0);
   const [lang, setLang] = useState("eng");
+  const [gameWon, setGameWon] = useState(false);
 
   const diceElements = dice?.map((die) => {
     return (
@@ -62,6 +63,13 @@ export default function App() {
     );
   });
 
+  useEffect(() => {
+    const allHeld = dice?.every((die) => die.isHeld);
+    const firstValue = dice[0].value;
+    const allSameValue = dice?.every((die) => die.value === firstValue);
+
+    allHeld && allSameValue && setGameWon(true);
+  }, [dice]);
   return (
     <main>
       <div className="lang--container">
@@ -78,8 +86,14 @@ export default function App() {
       <h1 className="title">{content[lang].title}</h1>
       <p className="instructions">{content[lang].instructions}</p>
       <div className="dice--container">{diceElements}</div>
-      <PushButton handleRoll={handleRoll} lang={lang} content={content} />
+      <PushButton
+        handleRoll={handleRoll}
+        lang={lang}
+        content={content}
+        gameWon={gameWon}
+      />
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
+      {gameWon && <p>Congratulations you've won the game :)</p>}
     </main>
   );
 }
