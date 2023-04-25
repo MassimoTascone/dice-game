@@ -14,11 +14,12 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 .lang--container {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
+  position: absolute;
+  top: 10px;
+  right: 0;
 }
 .lang-select {
   margin-right: 10px;
