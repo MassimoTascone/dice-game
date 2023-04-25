@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import "./PushButton.css";
 
 export function PushButton(props) {
-  console.log(props.gameWon);
   return (
     <button className="btn" onClick={props.handleRoll}>
       <span className="btn--shadow"></span>

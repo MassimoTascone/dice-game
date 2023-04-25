@@ -93,7 +93,11 @@ export default function App() {
         gameWon={gameWon}
       />
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
-      {gameWon && <p>Congratulations you've won the game :)</p>}
+      {gameWon && (
+        <p>
+          <b>Congratulations you&apos;ve won the game 😀</b>
+        </p>
+      )}
     </main>
   );
 }
