@@ -33,18 +33,21 @@ export default function App() {
       })
     );
   }
-
+  function restartGame() {
+    setDice(allNewDice());
+    setGameWon(false);
+    setRollNbr(0);
+  }
+  function langChange(e) {
+    const langSelected = e.target.value;
+    setLang(langSelected);
+  }
   function handleClick(id) {
     setDice((oldDice) =>
       oldDice.map((die) => {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
       })
     );
-  }
-
-  function langChange(e) {
-    const langSelected = e.target.value;
-    setLang(langSelected);
   }
 
   const [dice, setDice] = useState(allNewDice());
@@ -70,6 +73,7 @@ export default function App() {
 
     allHeld && allSameValue && setGameWon(true);
   }, [dice]);
+
   return (
     <main>
       <div className="lang--container">
@@ -91,11 +95,12 @@ export default function App() {
         lang={lang}
         content={content}
         gameWon={gameWon}
+        restart={restartGame}
       />
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
       {gameWon && (
-        <p>
-          <b>Congratulations you&apos;ve won the game 😀</b>
+        <p className="win-txt">
+          <b>{content[lang].win}</b>
         </p>
       )}
     </main>
