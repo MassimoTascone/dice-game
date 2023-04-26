@@ -6,6 +6,8 @@ export const content = {
     counter: "Dés lancés",
     counterBis: "fois",
     btn: "Lancez Dés",
+    again: "Rejouez",
+    win: "Félicitations vous avez gagné la partie 😀",
   },
   eng: {
     title: "Dice Game",
@@ -14,5 +16,7 @@ export const content = {
     counter: "You rolled",
     counterBis: "times",
     btn: "Roll Dice",
+    again: "Play Again",
+    win: "Congratulations you've won the game 😀",
   },
 };
