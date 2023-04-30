@@ -1,20 +1,16 @@
 <!-- ABOUT THE PROJECT -->
+<a name="readme-top"></a>
 ## About The Project
 
 This is small React project for learning purposes only. It is a small dice game created with Reactjs and Vite and deployed on Vercel.
 The project is a challenge at the end of [Bob Ziroll's](https://scrimba.com/learn/learnreact) React course on Scrimba.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
 
-* [![React][React.js]][https://react.dev/]
-* [![Vite][Vite]][https://vitejs.dev/]
-* 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* [React.js](https://react.dev/)
+* [Vite](https://vitejs.dev/)
 
 
 <!-- GETTING STARTED -->
