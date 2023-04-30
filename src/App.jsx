@@ -6,23 +6,20 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { content } from "./translation";
 
+//Helper function to generate new die
+const generateNewDie = () => ({
+  value: Math.ceil(Math.random() * 6),
+  isHeld: false,
+  id: nanoid(),
+});
+// Generate array of random nbrs
+const allNewDice = () => Array(10).fill().map(generateNewDie);
+
 export default function App() {
-  //Helper function to generate new die
-  function generateNewDie() {
-    return {
-      value: Math.ceil(Math.random() * 6),
-      isHeld: false,
-      id: nanoid(),
-    };
-  }
-  // Generate array of random nbrs
-  const allNewDice = () => {
-    const diceArray = [];
-    for (let i = 0; i < 10; i++) {
-      diceArray.push(generateNewDie());
-    }
-    return diceArray;
-  };
+  const [dice, setDice] = useState(allNewDice());
+  const [rollNbr, setRollNbr] = useState(0);
+  const [lang, setLang] = useState("eng");
+  const [gameWon, setGameWon] = useState(false);
 
   // Reroll dice nbrs
   function handleRoll() {
@@ -50,22 +47,6 @@ export default function App() {
     );
   }
 
-  const [dice, setDice] = useState(allNewDice());
-  const [rollNbr, setRollNbr] = useState(0);
-  const [lang, setLang] = useState("eng");
-  const [gameWon, setGameWon] = useState(false);
-
-  const diceElements = dice?.map((die) => {
-    return (
-      <Die
-        value={die.value}
-        key={die.id}
-        handleClick={() => handleClick(die.id)}
-        isHeld={die.isHeld}
-      />
-    );
-  });
-
   useEffect(() => {
     const allHeld = dice?.every((die) => die.isHeld);
     const firstValue = dice[0].value;
@@ -89,14 +70,19 @@ export default function App() {
       </div>
       <h1 className="title">{content[lang].title}</h1>
       <p className="instructions">{content[lang].instructions}</p>
-      <div className="dice--container">{diceElements}</div>
-      <PushButton
-        handleRoll={handleRoll}
-        lang={lang}
-        content={content}
-        gameWon={gameWon}
-        restart={restartGame}
-      />
+      <div className="dice--container">
+        {dice?.map((die) => (
+          <Die
+            value={die.value}
+            key={die.id}
+            handleClick={() => handleClick(die.id)}
+            isHeld={die.isHeld}
+          />
+        ))}
+      </div>
+      <PushButton onClick={gameWon ? restartGame : handleRoll}>
+        {gameWon ? content[lang].again : content[lang].btn}
+      </PushButton>
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
       {gameWon && (
         <p className="win-txt">
