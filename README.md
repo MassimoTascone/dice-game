@@ -29,7 +29,7 @@ The project is a challenge at the end of [Bob Ziroll's](https://scrimba.com/lear
 <!-- GETTING STARTED -->
 ## Getting Started
 
-If you want to run this project locally you'll need to first clone it and then follow these steps :
+If you want to run this project locally you'll need to follow these steps :
 
 
 1. Clone the repo
