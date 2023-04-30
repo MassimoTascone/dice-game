@@ -1,6 +1,19 @@
+
+
+# Dice Game
+
+<div align="center">
+  <a href="https://dice-game-phi-three.vercel.app">
+    <img src="https://i.imgur.com/S88PzQM.png" alt="Website Preview" width="300" height="300">
+  </a>
+ </div>
+ 
+ <br/>
+
 <!-- ABOUT THE PROJECT -->
 <a name="readme-top"></a>
 ## About The Project
+
 
 This is small React project for learning purposes only. It is a small dice game created with Reactjs and Vite and deployed on Vercel.
 The project is a challenge at the end of [Bob Ziroll's](https://scrimba.com/learn/learnreact) React course on Scrimba.
