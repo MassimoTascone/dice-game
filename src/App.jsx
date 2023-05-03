@@ -20,6 +20,7 @@ export default function App() {
   const [rollNbr, setRollNbr] = useState(0);
   const [lang, setLang] = useState("eng");
   const [gameWon, setGameWon] = useState(false);
+  const [isBtnDisable, setIsBtnDisable] = useState(false);
 
   // Reroll dice nbrs
   function handleRoll() {
@@ -34,6 +35,7 @@ export default function App() {
     setDice(allNewDice());
     setGameWon(false);
     setRollNbr(0);
+    setIsBtnDisable(false);
   }
   function langChange(e) {
     const langSelected = e.target.value;
@@ -53,6 +55,7 @@ export default function App() {
     const allSameValue = dice?.every((die) => die.value === firstValue);
 
     allHeld && allSameValue && setGameWon(true);
+    allHeld && !allSameValue && setIsBtnDisable(true);
   }, [dice]);
 
   return (
@@ -80,13 +83,22 @@ export default function App() {
           />
         ))}
       </div>
-      <PushButton onClick={gameWon ? restartGame : handleRoll}>
+      <PushButton
+        onClick={gameWon ? restartGame : handleRoll}
+        disabled={isBtnDisable}
+      >
         {gameWon ? content[lang].again : content[lang].btn}
       </PushButton>
       <RollCounter lang={lang} rollNbr={rollNbr} content={content} />
       {gameWon && (
         <p className="win-txt">
           <b>{content[lang].win}</b>
+        </p>
+      )}
+      {isBtnDisable && (
+        <p>
+          Make sure to keep only the same number{" "}
+          <span onClick={restartGame}>Try Again ?</span>
         </p>
       )}
     </main>
