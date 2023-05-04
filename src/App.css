@@ -50,6 +50,13 @@ main {
 .win-txt {
   font-size: 16px;
 }
+.try-again {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.try-again:hover {
+  font-style: italic;
+}
 
 @media (min-width: 600px) {
   body {

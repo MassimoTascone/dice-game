@@ -35,7 +35,6 @@ export default function App() {
     setDice(allNewDice());
     setGameWon(false);
     setRollNbr(0);
-    setIsBtnDisable(false);
   }
   function langChange(e) {
     const langSelected = e.target.value;
@@ -56,6 +55,7 @@ export default function App() {
 
     allHeld && allSameValue && setGameWon(true);
     allHeld && !allSameValue && setIsBtnDisable(true);
+    allHeld && !allSameValue ? setIsBtnDisable(true) : setIsBtnDisable(false);
   }, [dice]);
 
   return (
@@ -95,12 +95,7 @@ export default function App() {
           <b>{content[lang].win}</b>
         </p>
       )}
-      {isBtnDisable && (
-        <p>
-          Make sure to keep only the same number{" "}
-          <span onClick={restartGame}>Try Again ?</span>
-        </p>
-      )}
+      {isBtnDisable && <p>{content[lang].warning}</p>}
     </main>
   );
 }
