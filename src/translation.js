@@ -8,6 +8,7 @@ export const content = {
     btn: "Lancez Dés",
     again: "Rejouez",
     win: "Félicitations vous avez gagné la partie 😀",
+    warning: "Veillez à ne conserver que le même nombre",
   },
   eng: {
     title: "Dice Game",
@@ -18,5 +19,6 @@ export const content = {
     btn: "Roll Dice",
     again: "Play Again",
     win: "Congratulations you've won the game 😀",
+    warning: "Make sure to keep only the same number",
   },
 };
